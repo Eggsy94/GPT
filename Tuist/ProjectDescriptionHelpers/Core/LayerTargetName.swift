@@ -5,12 +5,11 @@
 //  Created by Eggsy on 2023/03/17.
 //
 
-import Foundation
 import ProjectDescription
 
 public protocol LayerTargetName: RawRepresentable where RawValue == String {
   var layer: any Layer.Type { get }
-  func targetName(_ paltform: Platform) -> String
+  func targetName(_ platform: Platform) -> String
 }
 
 extension LayerTargetName {

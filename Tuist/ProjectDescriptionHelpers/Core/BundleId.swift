@@ -5,7 +5,6 @@
 //  Created by Eggsy on 2023/03/16.
 //
 
-import Foundation
 import ProjectDescription
 
 public enum BundleId {

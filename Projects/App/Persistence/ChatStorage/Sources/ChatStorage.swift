@@ -6,7 +6,18 @@
 //
 
 import Foundation
+import CloudKit
+import Combine
 
-struct ChatStorage {
+public class ChatStorage {
   
+  public static let shard = ChatStorage()
+  
+  private let container: CKContainer
+  private let privateDatabase: CKDatabase
+  
+  private init() {
+    container = CKContainer(identifier: "")
+    privateDatabase = container.privateCloudDatabase
+  }
 }

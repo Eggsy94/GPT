@@ -5,8 +5,6 @@
 //  Created by Eggsy on 2023/03/15.
 //
 
-import Foundation
-
 public extension Dep {
   /**
    앱 전체에서 사용되는 기본 모델과 유틸리티를 포함합니다.

@@ -5,8 +5,6 @@
 //  Created by Eggsy on 2023/03/16.
 //
 
-import Foundation
-
 public extension Dep {
   /**
    채팅 메시지 및 기타 앱 데이터를 저장하고 검색하는 데 사용되는 모듈입니다.

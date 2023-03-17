@@ -7,6 +7,12 @@ import ChatUI_iOS
 import ChatUI_macos
 #endif
 
+#if os(iOS)
+import ChatViewModel_iOS
+#elseif os(macOS)
+import ChatViewModel_macos
+#endif
+
 @main
 struct GPT { }
 
