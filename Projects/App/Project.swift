@@ -1,39 +1,43 @@
 
 import ProjectDescription
- 
+import ProjectDescriptionHelpers
+
 func appProject() -> Project {
+  
+  let dependencies: [any LayerTargetName] = [
+    TargetDependency.Presentation.TargetName.ChatViewModel,
+    TargetDependency.Presentation.TargetName.ChatUI
+  ]
+  
   let targets: [Target] = [
     .init(
-      name: "iOS",
+      name: Platform.iOS.rawValue,
       platform: .iOS,
       product: .app,
-      bundleId: "Eggsy.study.gpt.iphone",
-      deploymentTarget: .iOS(
-        targetVersion: "16.0", devices: [.iphone]
-      ),
-      sources: ["Sources/**"],
-      dependencies: [],
+      bundleId: BundleId.forPlatform(.iOS, name: "App"),
+      deploymentTarget: .iOS,
+      sources: .paths(["Sources/**"]),
+      dependencies: dependencies.map { $0.dep(platform: .iOS) },
       settings: .settings(base: [
         "SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD": false
       ])
     ),
     .init(
-      name: "Mac",
+      name: Platform.macOS.rawValue,
       platform: .macOS,
       product: .app,
-      bundleId: "Eggsy.study.gpt.mac",
-      deploymentTarget: .macOS(targetVersion: "13.0"),
+      bundleId: BundleId.forPlatform(.macOS, name: "App"),
+      deploymentTarget: .macOS,
       sources: ["Sources/**"],
-      dependencies: []
+      dependencies: dependencies.map { $0.dep(platform: .macOS) }
     )
   ]
   
   return .init(
     name: "App",
-    organizationName: "Eggsy.study.gpt",
-    options: .options(automaticSchemesOptions: .disabled),
+    organizationName: "Eggsy.study",
     targets: targets,
-    additionalFiles: [] //프로젝트파일에 들어갈 파일 목록들
+    additionalFiles: []
   )
 }
 
