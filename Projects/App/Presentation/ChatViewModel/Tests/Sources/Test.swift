@@ -7,3 +7,5 @@
 
 import Foundation
 import XCTest
+import ChatViewModel_ios
+import ChatUI_ios

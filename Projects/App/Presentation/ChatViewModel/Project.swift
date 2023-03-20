@@ -11,6 +11,9 @@ import ProjectDescriptionHelpers
 let project: Project = .makeProject(
   layer: Dep.Presentation.self,
   name: .ChatViewModel,
-  product: .dynamicLibrary,
-  dependencies: []
+  product: .framework,
+  dependencies: [
+    Dep.Core.TargetName.Utilities,
+    Dep.Core.TargetName.Model
+  ]
 )

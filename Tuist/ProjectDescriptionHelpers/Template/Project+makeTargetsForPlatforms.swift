@@ -13,10 +13,10 @@ extension Project {
     layer: T.Type,
     name targetName: T.TargetName,
     product: ProjectDescription.Product,
-    dependencies: [Dep]
+    dependencies: [any LayerTargetName]
   ) -> [Target] {
     
-    let isResouces = (product == .framework || product == .staticFramework)
+    let isResouces = false//(product == .framework || product == .staticFramework)
     let name = targetName.rawValue
     return [
       .init(
@@ -25,9 +25,11 @@ extension Project {
         product: product,
         bundleId: BundleId.forPlatform(.iOS, name: name),
         deploymentTarget: .iOS,
-        sources: ["Sources/*.swift"],
+        infoPlist: .default,
+        sources: ["Sources/**/*.swift"],
         resources: isResouces ? ["Resources/**"]: nil,
-        dependencies: dependencies
+        dependencies: dependencies.map { $0.dep(platform: .iOS) }
+        
       ),
       .init(
         name: name+"_\(Platform.macOS.rawValue)",
@@ -35,9 +37,10 @@ extension Project {
         product: product,
         bundleId: BundleId.forPlatform(.macOS, name: name),
         deploymentTarget: .macOS,
-        sources: ["Sources/*.swift"],
+        infoPlist: .default,
+        sources: ["Sources/**/*.swift"],
         resources: isResouces ? ["Resources/**"]: nil,
-        dependencies: dependencies
+        dependencies: dependencies.map { $0.dep(platform: .macOS) }
       ),
       .init(
         name: name+"_unitTest",
@@ -45,6 +48,7 @@ extension Project {
         product: .unitTests,
         bundleId: BundleId.forPlatform(.iOS, name: name)+".unitTest",
         deploymentTarget: .iOS,
+        infoPlist: .default,
         sources: ["Tests/Sources/*.swift"],
         dependencies: [
           [layer.target(name: targetName, platform: .iOS)], [.xctest]

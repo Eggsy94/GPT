@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project: Project = .makeProject(
   layer: Dep.Networking.self,
   name: .ChatGPTAPIClient,
-  product: .dynamicLibrary,
+  product: .framework,
   dependencies: []
 )
 

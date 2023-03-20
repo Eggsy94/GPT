@@ -5,8 +5,8 @@ import ProjectDescriptionHelpers
 func appProject() -> Project {
   
   let dependencies: [any LayerTargetName] = [
-    TargetDependency.Presentation.TargetName.ChatViewModel,
-    TargetDependency.Presentation.TargetName.ChatUI
+    Dep.Presentation.TargetName.ChatViewModel,
+    Dep.Presentation.TargetName.ChatUI
   ]
   
   let targets: [Target] = [

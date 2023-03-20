@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project: Project = .makeProject(
   layer: Dep.Persistence.self,
   name: .ChatStorage,
-  product: .dynamicLibrary,
+  product: .framework,
   dependencies: []
 )
 

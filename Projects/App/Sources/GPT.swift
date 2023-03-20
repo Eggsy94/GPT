@@ -2,15 +2,9 @@
 import SwiftUI
 
 #if os(iOS)
-import ChatUI_iOS
+import ChatUI_ios
 #elseif os(macOS)
 import ChatUI_macos
-#endif
-
-#if os(iOS)
-import ChatViewModel_iOS
-#elseif os(macOS)
-import ChatViewModel_macos
 #endif
 
 @main

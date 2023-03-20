@@ -13,7 +13,7 @@ public extension Project {
     layer: T.Type,
     name: T.TargetName,
     product: Product,
-    dependencies: [Dep]
+    dependencies: [any LayerTargetName]
   ) -> Self {
     .init(
       name: name.rawValue,

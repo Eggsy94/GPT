@@ -11,6 +11,6 @@ import ProjectDescriptionHelpers
 let project: Project = .makeProject(
   layer: Dep.Core.self,
   name: .Model,
-  product: .dynamicLibrary,
+  product: .framework,
   dependencies: []
 )

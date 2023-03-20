@@ -6,7 +6,16 @@
 //
 
 import Foundation
+#if os(iOS)
+import Utilities_ios
+#elseif os(macOS)
+import Utilities_macos
+#endif
 
-class ChatViewModel: ObservableObject {
-  
+import Combine
+
+public class ChatViewModel: ObservableObject {
+  public var colorMode = AppSetting.shared.colorMode
 }
+
+extension ChatViewModel { }
