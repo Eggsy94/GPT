@@ -18,29 +18,25 @@ public struct ChatUI {
   @ObservedObject
   var viewModel = ChatViewModel()
   
+  @State
+  var str: String = ""
+  
   public init() {}
 }
 
 extension ChatUI: View {
   public var body: some View {
     ZStack {
-      VStack(spacing: .zero) {
-        ScrollView(.vertical, showsIndicators: false) {
-          LazyVStack(spacing: .zero) {
-            ForEach(0...99, id: \.self) {
-              Text("\($0)")
-            }
-          }
-        }
-        TextField("메시지를 입력하세요", text: .constant(""))
-      }
       
-      Button(action: {
-        print("GGGGG")
-      }) {
-       EmptyView()
+      if viewModel.apiKey.isEmpty {
+        EnteredAPIKeyView()
+      } else {
+        VStack(spacing: .zero) {
+          
+          
+        }
+        FindView(isFind: $viewModel.isFind)
       }
-      .keyboardShortcut("f")
     }
   }
 }

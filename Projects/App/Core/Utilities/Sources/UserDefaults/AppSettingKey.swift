@@ -9,4 +9,5 @@ import Foundation
 
 internal enum AppSettingKey: String {
   case ColorMode
+  case APIKey
 }

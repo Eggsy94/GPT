@@ -16,6 +16,12 @@ import Combine
 
 public class ChatViewModel: ObservableObject {
   public var colorMode = AppSetting.shared.colorMode
+  public var apiKey = AppSetting.shared.apiKey
+  
+  @Published
+  public var isFind: Bool = false
+  
+  public init() { }
 }
 
 extension ChatViewModel { }

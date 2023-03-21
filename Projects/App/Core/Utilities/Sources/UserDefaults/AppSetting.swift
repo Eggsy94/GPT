@@ -17,6 +17,13 @@ public final class AppSetting {
   public var colorModePublisher: AnyPublisher<ColorMode, Never> {
     _colorMode.publishedValue
   }
+  
+  @WrappedDefault(.APIKey, defaultValue: "")
+  public var apiKey: String
+  
+  public var apiKeyPublisher: AnyPublisher<String, Never> {
+    _apiKey.publishedValue
+  }
 }
 
 extension AppSetting {

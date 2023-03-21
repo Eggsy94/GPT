@@ -16,7 +16,8 @@ func appProject() -> Project {
       product: .app,
       bundleId: BundleId.forPlatform(.iOS, name: "App"),
       deploymentTarget: .iOS,
-      sources: .paths(["Sources/**"]),
+      sources: ["Sources/**"],
+      resources: ["Resources/**"],
       dependencies: dependencies.map { $0.dep(platform: .iOS) },
       settings: .settings(base: [
         "SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD": false
